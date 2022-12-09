@@ -6,7 +6,6 @@ public class Graph {
     private int adjMat[][]; // матрица смежности
     private int nVerts; // текущее количество вершин
     private Stack<Integer> stack;
-
     public Graph() { // инициализация внутрених полей
         vertexArray = new Vertex[MAX_VERTS];
         adjMat = new int[MAX_VERTS][MAX_VERTS];
