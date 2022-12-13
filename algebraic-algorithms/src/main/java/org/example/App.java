@@ -12,5 +12,6 @@ public class App
     {
         ExponentiationSolverImpl exponentiationSolver = new ExponentiationSolverImpl();
         exponentiationSolver.exponentiate(2, 511);
+        exponentiationSolver.exponentiateWithBinaryDecomposition(2,511);
     }
 }
