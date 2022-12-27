@@ -8,7 +8,7 @@ public class ExponentiationSolverImpl implements ExponentiationSolver {
     /**
      * алгоритм возведения в степень через домножение O(N/2+LogN) = O(N).
      *
-     * @param number число, которое ы возводим в степень
+     * @param number число, которое мы возводим в степень
      * @param degree степень числа
      */
     @Override
@@ -16,7 +16,9 @@ public class ExponentiationSolverImpl implements ExponentiationSolver {
         var v = degree / 2;
         var x = v;
         var y = v;
-        var powersNumberTwo = 0; //инициализируем степень, в которую необходимо возвести двойку, для получения части степени (2^511 = 2^256 + 2^255)
+        //инициализируем степень, в которую необходимо возвести двойку,
+        //для получения части степени (2^511 = 2^256 + 2^255)
+        var powersNumberTwo = 0;
         for (int i = 0; i < degree; i++) {
             if (log2(x) % 1 == 0) {
                 powersNumberTwo = (int) log2(x);
@@ -36,7 +38,6 @@ public class ExponentiationSolverImpl implements ExponentiationSolver {
         }
         System.out.println("algorithm complexity: O(N/2+LogN) = O(N)\n" +
                 "result: " + new DecimalFormat("#0.00").format(rez.multiply(BigDecimal.valueOf(Math.pow(number, secondPower)))));
-
     }
 
     /**
@@ -64,7 +65,6 @@ public class ExponentiationSolverImpl implements ExponentiationSolver {
 
     /**
      * log b(a) = log10(a)/log10(b) -> log2x = log10(x)/log10(2)
-     *
      * @param value число, чей двоичный логарифм нам необходимо получить
      */
     public double log2(long value) {
