@@ -43,7 +43,7 @@ public class ExponentiationSolverImpl implements ExponentiationSolver {
     /**
      * алгоритм возведения в степень через двоичное разложение показателя степени O(2LogN) = O(LogN)
      *
-     * @param number число, которое ы возводим в степень
+     * @param number число, которое мы возводим в степень
      * @param degree степень числа
      */
     @Override
