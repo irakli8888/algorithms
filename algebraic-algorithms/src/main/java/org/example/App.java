@@ -11,9 +11,12 @@ public class App {
         ExponentiationSolver exponentiationSolver = new ExponentiationSolverImpl();
         FibonacciSolverImpl fibonacciSolver = new FibonacciSolverImpl();
         PrimeNumbersSolver primeNumbersSolver = new PrimeNumbersSolverImpl();
+        //возведения в степень
         exponentiationSolver.exponentiate(2, 100);
         exponentiationSolver.exponentiateWithBinaryDecomposition(2, 100);
+        //поиск простых чисел решетом эратосфена
         primeNumbersSolver.getPrimeNumbersUsingTheSieveOfEratosthenes(10000000);
+        //числа фибоначчи через умножение матриц и бинарное разложение степени
         System.out.println(String
                 .format("the result of the algorithm for finding Fibonacci " +
                                 "numbers O(LogN) through raising matrices " +

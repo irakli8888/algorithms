@@ -33,7 +33,7 @@ public class PrimeNumbersSolverImpl implements PrimeNumbersSolver {
                 primes.add(i);
             }
         }
-        System.out.println(primes.size() + " size");
+        System.out.println(primes.size() + " - number of primes");
     }
 
 }
