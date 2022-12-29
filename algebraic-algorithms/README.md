@@ -8,3 +8,6 @@
 <br>Написать класс умножения матриц, реализовать алгоритм возведения матрицы в степень
 через двоичное разложение показателя степени, реализовать алгоритм поиска чисел Фибоначчи O(LogN) 
 через умножение матриц, используя созданный класс. src/main/java/org/example/fibonacci/FibonacciSolverImpl.java
+<br>Реализовать алгоритм "Решето Эратосфена" для быстрого поиска простых чисел O(N Log Log N).
+(src/main/java/org/example/prime_numbers/PrimeNumbersSolverImpl.java)
+(https://devmark.ru/article/eratosthene-sieve)
