@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         King king = new King();
         System.out.println(king.getKingMoves(7));
+        System.out.println(king.getHorseMovies(56));
 
     }
 }
