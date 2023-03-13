@@ -1,10 +1,13 @@
-import king.King;
+import calculator.StepsOfChessPiecesCalculator;
+import calculator.StepsOfChessPiecesCalculatorImpl;
 
 public class Main {
     public static void main(String[] args) {
-        King king = new King();
-        System.out.println(king.getKingMoves(7));
-        System.out.println(king.getHorseMovies(56));
+        StepsOfChessPiecesCalculator stepsOfChessPiecesCalculatorImpl = new StepsOfChessPiecesCalculatorImpl();
+        System.out.println(stepsOfChessPiecesCalculatorImpl.getKingMoves(7));
+        System.out.println(stepsOfChessPiecesCalculatorImpl.getHorseMovies(35));
+        System.out.println(stepsOfChessPiecesCalculatorImpl.getRookMovies(60));
+        System.out.println(stepsOfChessPiecesCalculatorImpl.getElephantMovies(27));
 
     }
 }
