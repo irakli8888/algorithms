@@ -20,7 +20,7 @@ public class TimingDynamicInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         long start = System.currentTimeMillis();
-        Object result = methods.get("sort").invoke(target, args);
+        Object result = methods.get(method.getName()).invoke(target, args);
         long elapsed = System.currentTimeMillis() - start;
         System.out.println("execution time for "
                 + target.getClass().getSimpleName() +

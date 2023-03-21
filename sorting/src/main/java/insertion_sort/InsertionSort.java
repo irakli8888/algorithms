@@ -4,6 +4,11 @@ import sort.Sort;
 import sort.SortShift;
 import sort.SortWithBinarySerach;
 
+/**
+ * Сортировка вставками (Insertion Sort).
+ * Суть алгоритма заключается в том что, на каждом шаге алгоритма мы берем один из элементов массива,
+ * находим позицию для вставки и вставляем. Массив из 1-го элемента считается отсортированным
+ */
 public class InsertionSort implements Sort, SortShift, SortWithBinarySerach {
 
     int[] array;
@@ -92,20 +97,18 @@ public class InsertionSort implements Sort, SortShift, SortWithBinarySerach {
         return array;
     }
 
-    //реализовать самому
     private int binarySearch(int key, int lowIndex, int highIndex) {
         if(highIndex <= lowIndex) {
             if (key > array[lowIndex]) {
                 return lowIndex + 1;
             } else return lowIndex;
         }
-        int mid = (lowIndex + highIndex)/2;
+        int mid = (lowIndex + (highIndex - 1)) / 2;
         if(key > array[mid]) {
             return binarySearch(key, mid + 1, highIndex);
         } else
             return binarySearch(key, lowIndex, mid - 1);
     }
-
 
     @Override
     public void swap(int x, int y) {
