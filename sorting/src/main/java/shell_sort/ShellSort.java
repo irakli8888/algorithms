@@ -21,6 +21,6 @@ public class ShellSort implements SortShift {
                 array[j + 1] = mem;
             }
         }
-        return new int[0];
+        return array;
     }
 }

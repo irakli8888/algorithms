@@ -81,7 +81,6 @@ public class InsertionSort implements Sort, SortShift, SortWithBinarySerach {
      *<br> онлайн алгоритм +
      * @return отсортированный массив
      */
-    //toDO описание, самостоятельная реализация
     @Override
     public int[] sortWithBinarySearch() {
         int j;

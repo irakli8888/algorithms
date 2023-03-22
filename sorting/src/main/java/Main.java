@@ -1,4 +1,5 @@
 import bubble_sort.BubbleSort;
+import selection_sort.SelectionSort;
 import shell_sort.ShellSort;
 import sort.Sort;
 import insertion_sort.InsertionSort;
@@ -12,9 +13,9 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int [] array = new int[100_000];
+        int [] array = new int[100_00];
 
-        for (int i = 0; i < 100_000; i++) {
+        for (int i = 0; i < 100_00; i++) {
             array[i] = new Random().nextInt(10_000 + 1);
         }
 
@@ -45,10 +46,17 @@ public class Main {
                 new Class[]{SortShift.class},
                 new TimingDynamicInvocationHandler(new ShellSort(Arrays.copyOf(array, array.length))));
 
+        Sort selectionSort = (Sort) Proxy.newProxyInstance(
+                Sort.class.getClassLoader(),
+                new Class[]{Sort.class},
+                new TimingDynamicInvocationHandler(new SelectionSort(Arrays.copyOf(array, array.length)))
+        );
+
         bubbleSort.sort();
         insertionSort.sort();
         insertionSortShift.sortShift();
         insertionBinarySort.sortWithBinarySearch();
         shellSortShift.sortShift();
+        selectionSort.sort();
     }
 }
