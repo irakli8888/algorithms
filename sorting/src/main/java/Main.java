@@ -2,6 +2,7 @@ import bubble_sort.BubbleSort;
 import heap_sort.HeapSort;
 import insertion_sort.InsertionSort;
 import invocation_handler.*;
+import quick_sort.QuickSort;
 import selection_sort.SelectionSort;
 import shell_sort.ShellSort;
 import sort.*;
@@ -13,7 +14,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        int [] array = new int[100_000];
+        int[] array = new int[100_000];
 
         for (int i = 0; i < 100_000; i++) {
             array[i] = new Random().nextInt(10_000 + 1);
@@ -32,9 +33,9 @@ public class Main {
         );
 
         SortShift insertionSortShift = (SortShift) Proxy.newProxyInstance(
-                        SortShift.class.getClassLoader(),
-                        new Class[]{SortShift.class},
-                        new TimingDynamicInvocationHandler(new InsertionSort(Arrays.copyOf(array, array.length))));
+                SortShift.class.getClassLoader(),
+                new Class[]{SortShift.class},
+                new TimingDynamicInvocationHandler(new InsertionSort(Arrays.copyOf(array, array.length))));
 
         SortWithBinarySerach insertionBinarySort = (SortWithBinarySerach) Proxy.newProxyInstance(
                 SortWithBinarySerach.class.getClassLoader(),
@@ -58,6 +59,12 @@ public class Main {
                 new TimingDynamicInvocationHandler(new HeapSort(Arrays.copyOf(array, array.length)))
         );
 
+        Sort quiqSort = (Sort) Proxy.newProxyInstance(
+                Sort.class.getClassLoader(),
+                new Class[]{Sort.class},
+                new TimingDynamicInvocationHandler(new QuickSort(Arrays.copyOf(array, array.length)))
+        );
+
         bubbleSort.sort();
         insertionSort.sort();
         insertionSortShift.sortShift();
@@ -65,5 +72,6 @@ public class Main {
         shellSortShift.sortShift();
         selectionSort.sort();
         heapSort.sort();
+        quiqSort.sort();
     }
 }
