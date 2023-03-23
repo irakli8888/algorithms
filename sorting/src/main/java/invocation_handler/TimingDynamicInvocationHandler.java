@@ -5,6 +5,9 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * InvocationHandler для отслеживания времени выполнения сортировок
+ */
 public class TimingDynamicInvocationHandler implements InvocationHandler {
 
     private Object target;
