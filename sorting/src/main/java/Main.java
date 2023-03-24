@@ -2,6 +2,7 @@ import bubble_sort.BubbleSort;
 import heap_sort.HeapSort;
 import insertion_sort.InsertionSort;
 import invocation_handler.*;
+import merge_sort.MergeSort;
 import quick_sort.QuickSort;
 import selection_sort.SelectionSort;
 import shell_sort.ShellSort;
@@ -59,10 +60,17 @@ public class Main {
                 new TimingDynamicInvocationHandler(new HeapSort(Arrays.copyOf(array, array.length)))
         );
 
-        Sort quiqSort = (Sort) Proxy.newProxyInstance(
+        Sort quickSort = (Sort) Proxy.newProxyInstance(
                 Sort.class.getClassLoader(),
                 new Class[]{Sort.class},
                 new TimingDynamicInvocationHandler(new QuickSort(Arrays.copyOf(array, array.length)))
+        );
+
+
+        Sort mergeSort = (Sort) Proxy.newProxyInstance(
+                Sort.class.getClassLoader(),
+                new Class[]{Sort.class},
+                new TimingDynamicInvocationHandler(new MergeSort(Arrays.copyOf(array, array.length)))
         );
 
         bubbleSort.sort();
@@ -72,6 +80,7 @@ public class Main {
         shellSortShift.sortShift();
         selectionSort.sort();
         heapSort.sort();
-        quiqSort.sort();
+        quickSort.sort();
+        mergeSort.sort();
     }
 }
