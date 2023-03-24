@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * InvocationHandler для отслеживания времени выполнения сортировок
+ * InvocationHandler РґР»СЏ РѕС‚СЃР»РµР¶РёРІР°РЅРёСЏ РІСЂРµРјРµРЅРё РІС‹РїРѕР»РЅРµРЅРёСЏ СЃРѕСЂС‚РёСЂРѕРІРѕРє
  */
 public class TimingDynamicInvocationHandler implements InvocationHandler {
 
