@@ -1,4 +1,5 @@
 import bubble_sort.BubbleSort;
+import bucket_sort.BucketSort;
 import heap_sort.HeapSort;
 import insertion_sort.InsertionSort;
 import invocation_handler.*;
@@ -66,13 +67,18 @@ public class Main {
                 new TimingDynamicInvocationHandler(new QuickSort(Arrays.copyOf(array, array.length)))
         );
 
-
         Sort mergeSort = (Sort) Proxy.newProxyInstance(
                 Sort.class.getClassLoader(),
                 new Class[]{Sort.class},
                 new TimingDynamicInvocationHandler(new MergeSort(Arrays.copyOf(array, array.length)))
         );
 
+        Sort bucketSort = (Sort) Proxy.newProxyInstance(
+                Sort.class.getClassLoader(),
+                new Class[]{Sort.class},
+                new TimingDynamicInvocationHandler(new BucketSort(Arrays.copyOf(array, array.length))));
+
+        bucketSort.sort();
         bubbleSort.sort();
         insertionSort.sort();
         insertionSortShift.sortShift();
