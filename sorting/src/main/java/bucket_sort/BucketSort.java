@@ -3,10 +3,10 @@ package bucket_sort;
 import sort.Sort;
 
 /**
- * Ведерная сортировка.
- * в основе формула: 0 <=(a[i] * N) / max + 1 >= N - 1
- * <br>сложность в лучшем случае O(N), в худшем O(N^2):
- * <br>N (проход по всем числам и нахождение максимума) + N * K (применение формулы и размещение по бакетам) + N (проход по бакетам)
+ * Р’РµРґРµСЂРЅР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°.
+ * РІ РѕСЃРЅРѕРІРµ С„РѕСЂРјСѓР»Р°: 0 <=(a[i] * N) / max + 1 >= N - 1
+ * <br>СЃР»РѕР¶РЅРѕСЃС‚СЊ РІ Р»СѓС‡С€РµРј СЃР»СѓС‡Р°Рµ O(N), РІ С…СѓРґС€РµРј O(N^2):
+ * <br>N (РїСЂРѕС…РѕРґ РїРѕ РІСЃРµРј С‡РёСЃР»Р°Рј Рё РЅР°С…РѕР¶РґРµРЅРёРµ РјР°РєСЃРёРјСѓРјР°) + N * K (РїСЂРёРјРµРЅРµРЅРёРµ С„РѕСЂРјСѓР»С‹ Рё СЂР°Р·РјРµС‰РµРЅРёРµ РїРѕ Р±Р°РєРµС‚Р°Рј) + N (РїСЂРѕС…РѕРґ РїРѕ Р±Р°РєРµС‚Р°Рј)
  */
 public class BucketSort implements Sort {
 
@@ -19,7 +19,7 @@ public class BucketSort implements Sort {
     @Override
     public int[] sort() {
         int max = array[0];
-//        выбираем максимальный элемент
+//        РІС‹Р±РёСЂР°РµРј РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚
         for (int i = 0; i < array.length; i++) {
             if (max < array[i]) {
                 max = array[i];
@@ -29,7 +29,7 @@ public class BucketSort implements Sort {
 
         ListForSort[] bucket = new ListForSort[array.length];
         for (int element : array) {
-//            вычисляем номер ведра
+//            РІС‹С‡РёСЃР»СЏРµРј РЅРѕРјРµСЂ РІРµРґСЂР°
             int bucketNumber = (element * array.length) / max;
             bucket[bucketNumber] = new ListForSort(element, bucket[bucketNumber]);
             ListForSort listForSort = bucket[bucketNumber];
@@ -64,7 +64,7 @@ public class BucketSort implements Sort {
     }
 
     /**
-     * Односвязний список для ведра.
+     * РћРґРЅРѕСЃРІСЏР·РЅРёР№ СЃРїРёСЃРѕРє РґР»СЏ РІРµРґСЂР°.
      */
     class ListForSort {
         public int value;
