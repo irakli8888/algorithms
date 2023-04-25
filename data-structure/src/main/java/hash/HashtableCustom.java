@@ -11,9 +11,9 @@ import java.util.Objects;
  */
 public class HashtableCustom<K, V> {
 
-    private final static int DEFAULT_CAPASITY = 16;
+    private final static int DEFAULT_CAPACITY = 16;
     private final static float LOAD_FACTOR = 0.75f;
-    private int threshold = DEFAULT_CAPASITY;
+    private int threshold = DEFAULT_CAPACITY;
     private Entry<K, V>[] buckets;
     private int size;
 
