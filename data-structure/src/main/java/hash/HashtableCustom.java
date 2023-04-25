@@ -5,10 +5,11 @@ import java.util.Objects;
 
 /**
  * Реализация хеш-таблицы, использующую метод цепочек при коллизиях
+ *
  * @param <K> ключ
  * @param <V> значение
  */
-public class HashtableCustom<K,V>{
+public class HashtableCustom<K, V> {
 
     private final static int DEFAULT_CAPASITY = 16;
     private final static float LOAD_FACTOR = 0.75f;
@@ -17,13 +18,13 @@ public class HashtableCustom<K,V>{
     private int size;
 
     public boolean contains(Object value) {
-        if(value == null) {
+        if (value == null) {
             throw new NullPointerException();
         }
-        for (int i = buckets.length - 1; i >= 0 ; i--) {
+        for (int i = buckets.length - 1; i >= 0; i--) {
             Entry<K, V> entry = buckets[i];
             while (entry != null) {
-                if(entry.value.equals(value)){
+                if (entry.value.equals(value)) {
                     return true;
                 }
                 entry = entry.next;
@@ -36,8 +37,8 @@ public class HashtableCustom<K,V>{
         int index = hash(key);
         Entry<K, V> entry = buckets[index];
         while (entry != null) {
-            if(entry.key.equals(key)) {
-               return true;
+            if (entry.key.equals(key)) {
+                return true;
             }
             entry = entry.next;
         }
@@ -48,7 +49,7 @@ public class HashtableCustom<K,V>{
         int index = hash(key);
         Entry<K, V> entry = buckets[index];
         while (entry != null) {
-            if(entry.key.equals(key)) {
+            if (entry.key.equals(key)) {
                 return entry.value;
             }
             entry = entry.next;
@@ -60,12 +61,12 @@ public class HashtableCustom<K,V>{
         int index = hash(key);
         Entry<K, V> entry = buckets[index];
 
-        if(value == null) {
+        if (value == null) {
             throw new NullPointerException();
         }
 
         while (entry != null) {
-            if(entry.key.equals(key)) {
+            if (entry.key.equals(key)) {
                 V newValue = entry.value;
                 entry.value = value;
                 return newValue;
@@ -93,8 +94,8 @@ public class HashtableCustom<K,V>{
         Entry<K, V> last = null;
 
         while (entry != null) {
-            if(entry.key.equals(key)) {
-                if(last == null) {
+            if (entry.key.equals(key)) {
+                if (last == null) {
                     buckets[index] = entry.next;
                 } else {
                     last.next = entry.next;
@@ -115,56 +116,56 @@ public class HashtableCustom<K,V>{
         threshold = (int) (newCapacity * LOAD_FACTOR);
         buckets = (Entry<K, V>[]) new Entry[newCapacity];
 
-        for (int i = oldBuckets.length - 1; i >= 0 ; i--) {
+        for (int i = oldBuckets.length - 1; i >= 0; i--) {
             Entry<K, V> entry = oldBuckets[i];
             while (entry != null) {
                 int index = hash(entry.key);
-                 Entry<K, V> dest = buckets[index];
+                Entry<K, V> dest = buckets[index];
 
-                 if(dest != null) {
-                     Entry next = dest.next;
-                     while (next != null) {
-                         dest = next;
-                         next = dest.next;
-                     }
-                     dest.next = entry;
-                 } else {
-                     buckets[index] = entry;
-                 }
-                 Entry next = entry.next;
-                 entry.next = null;
-                 entry = next;
+                if (dest != null) {
+                    Entry next = dest.next;
+                    while (next != null) {
+                        dest = next;
+                        next = dest.next;
+                    }
+                    dest.next = entry;
+                } else {
+                    buckets[index] = entry;
+                }
+                Entry next = entry.next;
+                entry.next = null;
+                entry = next;
             }
         }
     }
 
-    private int hash(Object key){
+    private int hash(Object key) {
         int hash = (key.hashCode() & Integer.MAX_VALUE) % buckets.length;
-        return  hash< 0 ? -hash : hash;
+        return hash < 0 ? -hash : hash;
     }
 
-    private static class Entry<K,V> implements Map.Entry<K,V> {
+    private static class Entry<K, V> implements Map.Entry<K, V> {
         final int hash;
         final K key;
         V value;
-        HashtableCustom.Entry<K,V> next;
+        HashtableCustom.Entry<K, V> next;
 
-        protected Entry(int hash, K key, V value, HashtableCustom.Entry<K,V> next) {
+        protected Entry(int hash, K key, V value, HashtableCustom.Entry<K, V> next) {
             this.hash = hash;
-            this.key =  key;
+            this.key = key;
             this.value = value;
             this.next = next;
         }
 
         protected Entry(int hash, K key, V value) {
             this.hash = hash;
-            this.key =  key;
+            this.key = key;
             this.value = value;
         }
 
         protected Object clone() {
             return new HashtableCustom.Entry<>(hash, key, value,
-                    (next==null ? null : (HashtableCustom.Entry<K,V>) next.clone()));
+                    (next == null ? null : (HashtableCustom.Entry<K, V>) next.clone()));
         }
 
         public K getKey() {
@@ -188,8 +189,8 @@ public class HashtableCustom<K,V>{
             if (!(o instanceof Map.Entry<?, ?> e))
                 return false;
 
-            return (key==null ? e.getKey()==null : key.equals(e.getKey())) &&
-                    (value==null ? e.getValue()==null : value.equals(e.getValue()));
+            return (key == null ? e.getKey() == null : key.equals(e.getKey())) &&
+                    (value == null ? e.getValue() == null : value.equals(e.getValue()));
         }
 
         public int hashCode() {
@@ -197,7 +198,7 @@ public class HashtableCustom<K,V>{
         }
 
         public String toString() {
-            return key.toString()+"="+value.toString();
+            return key.toString() + "=" + value.toString();
         }
     }
 
