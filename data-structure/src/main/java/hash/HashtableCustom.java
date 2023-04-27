@@ -140,8 +140,7 @@ public class HashtableCustom<K, V> {
     }
 
     private int hash(Object key) {
-        int hash = (key.hashCode() & Integer.MAX_VALUE) % buckets.length;
-        return hash < 0 ? -hash : hash;
+        return (key.hashCode() & Integer.MAX_VALUE) % buckets.length;
     }
 
     private static class Entry<K, V> implements Map.Entry<K, V> {
