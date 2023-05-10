@@ -1,3 +1,5 @@
+package bfs;
+
 /**
  * @author IrklKvch
  */

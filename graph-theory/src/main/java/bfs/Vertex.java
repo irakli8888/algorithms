@@ -1,3 +1,8 @@
+package bfs;
+
+/**
+ * @author IrklKvch
+ */
 public class Vertex {
     private char label;  // метка А например
     public boolean wasVisited;

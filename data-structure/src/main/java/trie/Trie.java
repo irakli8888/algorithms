@@ -11,7 +11,7 @@ public class Trie {
 
     public void insert(String word) {
         Node node = root;
-        for (char symbol :  word.toCharArray()){
+        for (char symbol : word.toCharArray()) {
             node = node.next(symbol);
         }
         node.isEnd = true;
@@ -19,7 +19,7 @@ public class Trie {
 
     public boolean search(String word) {
         Node node = go(word);
-        if(node == null) {
+        if (node == null) {
             return false;
         }
         return node.isEnd;
@@ -29,15 +29,16 @@ public class Trie {
         return go(prefix) != null;
     }
 
-    public Node go(String word){
+    public Node go(String word) {
         Node node = root;
-        for (char symbol :  word.toCharArray()) {
-            if(node.exists(symbol)) {
+        for (char symbol : word.toCharArray()) {
+            if (node.exists(symbol)) {
                 node = node.next(symbol);
             } else {
                 return null;
             }
-        }return node;
+        }
+        return node;
     }
 }
 

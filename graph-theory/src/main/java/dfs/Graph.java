@@ -1,12 +1,19 @@
+package dfs;
+
 import java.util.Stack;
 
 public class Graph {
+
     private final int MAX_VERTS = 10;
     private Vertex vertexArray[]; //массив вершин
     private int adjMat[][]; // матрица смежности
     private int nVerts; // текущее количество вершин
     private Stack<Integer> stack;
-    public Graph() { // инициализация внутрених полей
+
+    /**
+     * инициализация внутренних полей
+     */
+    public Graph() {
         vertexArray = new Vertex[MAX_VERTS];
         adjMat = new int[MAX_VERTS][MAX_VERTS];
         nVerts = 0;
@@ -31,14 +38,17 @@ public class Graph {
         System.out.println(vertexArray[v].getLabel());
     }
 
-    public void dfs() { // обход в глубину
+    /**
+     * обход в глубину
+     */
+    public void dfs() {
         vertexArray[0].setWasVisited(true); // берётся первая вершина
         displayVertex(0);
         stack.push(0);
 
         while (!stack.empty()) {
-            int v = getAdjUnvisitedVertex(stack.peek()); // вынуть индекс смежной веришины, если есть 1, нету -1
-            if (v == -1) { // если непройденных смежных вершин нету
+            int v = getAdjUnvisitedVertex(stack.peek()); // вернуть индекс смежной вершины. Eсли нет: -1
+            if (v == -1) { // если не пройденных смежных вершин нет
                 stack.pop(); // элемент извлекается из стека
             }
             else {
@@ -57,7 +67,7 @@ public class Graph {
     private int getAdjUnvisitedVertex(int v) {
         for (int j = 0; j < nVerts; j++) {
             if (adjMat[v][j] == 1 && vertexArray[j].wasVisited == false) {
-                return j; //возвращает первую найденную вершину
+                return j;
             }
         }
         return -1;
