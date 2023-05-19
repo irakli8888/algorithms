@@ -1,6 +1,7 @@
 package dijkstra;
 
 import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 public class Path {
 
@@ -9,7 +10,7 @@ public class Path {
 
     public Path() {
         this.parentVertexes = new LinkedList<>();
-        this.distance = Integer.MAX_VALUE;
+        this.distance = 10000;
     }
 
     public int getDistance() {
@@ -31,7 +32,7 @@ public class Path {
     @Override
     public String toString() {
         return "Path{" +
-                "parentVertexes=" + parentVertexes +
+                "parentVertexes=" + parentVertexes.stream().map(a->a +1).collect(Collectors.toList()) +
                 ", distance=" + distance +
                 '}';
     }

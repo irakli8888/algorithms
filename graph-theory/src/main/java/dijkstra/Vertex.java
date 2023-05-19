@@ -9,15 +9,6 @@ public class Vertex {
 
     private String label;
     private boolean isVisited;
-    private int distance = Integer.MAX_VALUE;
-
-    public int getDistance() {
-        return distance;
-    }
-
-    public void setDistance(int distance) {
-        this.distance = distance;
-    }
 
     public boolean isVisited() {
         return isVisited;
