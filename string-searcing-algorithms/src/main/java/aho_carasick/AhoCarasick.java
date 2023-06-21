@@ -30,7 +30,7 @@ public class AhoCarasick {
     }
 
     private void buildSuffixTrie() {
-        Queue<TrieNode> queue = new PriorityQueue<>();
+        Queue<TrieNode> queue = new ArrayDeque<>();
 
         for (TrieNode node : root.child.values()) {
             queue.add(node);
@@ -45,7 +45,8 @@ public class AhoCarasick {
                 queue.add(child);
 
                 TrieNode suffixLink = node.suffixLink;
-                while (suffixLink != null && !suffixLink.child.containsKey(c)) {
+                while (suffixLink != null &&
+                        !suffixLink.child.containsKey(c)) {
                     suffixLink = suffixLink.suffixLink;
                 }
 
@@ -55,6 +56,36 @@ public class AhoCarasick {
             }
         }
     }
+
+    public List<String> findMatches(String text) {
+        List<String> matches = new ArrayList<>();
+        TrieNode node = root;
+
+        for (char c : text.toCharArray()) {
+            while (node != null && !node.child.containsKey(c)) {
+                node = node.suffixLink;
+            }
+
+            if(node == null) {
+                node = root;
+                continue;
+            }
+
+            node = node.child.get(c);
+            if(node.pattern != null) {
+                matches.add(node.pattern);
+            }
+
+            TrieNode finals = node.finalLink;
+
+            while (finals != null) {
+                matches.add(finals.pattern);
+                finals = finals.finalLink;
+            }
+        }
+        return matches;
+    }
+
 
     class TrieNode {
 

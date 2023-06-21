@@ -18,6 +18,8 @@ public class App {
 
         AhoCarasick ahoCarasick = new AhoCarasick(pattern);
 
+        System.out.println(ahoCarasick.findMatches("CARABASSBARABASS").size());
+
         System.out.println("");
     }
 }
