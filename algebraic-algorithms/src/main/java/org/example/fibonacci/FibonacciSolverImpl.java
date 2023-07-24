@@ -57,7 +57,7 @@ public class FibonacciSolverImpl implements FibonacciSolver {
             intermediateResultMatrix = matrixMultiplicator
                     .matrixMultiplication(intermediateResultMatrix, intermediateResultMatrix);
         }
-        //значение порядкогого номера содержит элемент 11 матрицы
+        //значение порядкового номера содержит элемент 11 матрицы
         return resultMatrix[1][1];
     }
 }

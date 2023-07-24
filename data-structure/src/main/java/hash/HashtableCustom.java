@@ -185,11 +185,7 @@ public class HashtableCustom<K, V> {
         }
 
         public boolean equals(Object o) {
-            if (!(o instanceof Map.Entry<?, ?> e))
-                return false;
-
-            return (key == null ? e.getKey() == null : key.equals(e.getKey())) &&
-                    (value == null ? e.getValue() == null : value.equals(e.getValue()));
+    return false;
         }
 
         public int hashCode() {

@@ -38,7 +38,10 @@ public class LuckyTicketsSolverImpl implements LuckyTicketsSolver {
                 sum ++;
                 break;
             }
-            if(n == 1)break;
+
+            if(n == 1){
+                break;
+            }
 
             if(l >= 0) {
                 resume(n - 1, l);
