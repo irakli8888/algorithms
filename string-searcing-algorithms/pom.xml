@@ -29,6 +29,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.version}</version>
                 <configuration>
+                    <encoding>UTF-8</encoding>
                     <source>17</source>
                     <target>17</target>
                 </configuration>
